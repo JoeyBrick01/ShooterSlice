@@ -1,52 +1,69 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.Screens;
+using MonoGame.Extended.Screens.Transitions;
+using ShooterSlice.Scenes;
 
-namespace ShooterSlice
+namespace ShooterSlice;
+
+public class Game1 : Game
 {
-    public class Game1 : Game
+    private GraphicsDeviceManager _graphics;
+    private SpriteBatch _spriteBatch;
+    private readonly ScreenManager _screenManager;
+
+    public Game1()
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        // Graphics settings
+        _graphics = new GraphicsDeviceManager(this);
+        _graphics.PreferredBackBufferWidth = 1280;
+        _graphics.PreferredBackBufferHeight = 720;
+        _graphics.ApplyChanges();
 
-        public Game1()
-        {
-            _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-            IsMouseVisible = true;
-        }
+        Window.Title = "Shooter Slice";
 
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
+        Content.RootDirectory = "Content";
+        IsMouseVisible = true;
 
-            base.Initialize();
-        }
+        _screenManager = new ScreenManager();
+        Components.Add(_screenManager);
+    }
 
-        protected override void LoadContent()
-        {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+    protected override void Initialize()
+    {
+        // TODO: Add your initialization logic here
 
-            // TODO: use this.Content to load your game content here
-        }
+        base.Initialize();
 
-        protected override void Update(GameTime gameTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+        _screenManager.ShowScreen(new TitleScene(this));
+    }
 
-            // TODO: Add your update logic here
+    protected override void LoadContent()
+    {
+        _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            base.Update(gameTime);
-        }
+        // TODO: use this.Content to load your game content here
+    }
 
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+    protected override void Update(GameTime gameTime)
+    {
+        // TODO: Add your update logic here
 
-            // TODO: Add your drawing code here
+        base.Update(gameTime);
+    }
 
-            base.Draw(gameTime);
-        }
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+
+        // TODO: Add your drawing code here
+
+        base.Draw(gameTime);
+    }
+
+    protected override void UnloadContent()
+    {
+        base.UnloadContent();
     }
 }

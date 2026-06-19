@@ -14,3 +14,10 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin fonts/TitleFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/TitleFont.spritefont
+
