@@ -14,7 +14,7 @@ public class TitleScene : GameScreen
     private SpriteBatch _spriteBatch;
 
     // Title text properties.
-    private readonly string _titleText = "BirdsEye2D Slice";
+    private readonly string _titleText = "Shooter Slice";
     private SpriteFont _titleFont;
     private Vector2 _titlePosition;
     private Vector2 _titleOrigin;
