@@ -32,7 +32,6 @@ public class TitleScene : GameScreen
         _titleFont = Game.Content.Load<SpriteFont>("fonts/TitleFont");
         _titlePosition = new Vector2(Game.GraphicsDevice.PresentationParameters.BackBufferWidth * .5f, Game.GraphicsDevice.PresentationParameters.BackBufferHeight * .2f);
         _titleOrigin = _titleFont.MeasureString(_titleText) * .5f;
-
     }
 
     public override void Update(GameTime gameTime)

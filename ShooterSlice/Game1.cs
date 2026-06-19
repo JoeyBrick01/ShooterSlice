@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
 using ShooterSlice.Scenes;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ShooterSlice;
 
@@ -12,6 +13,8 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private readonly ScreenManager _screenManager;
+
+    Texture2D _crosshair;
 
     public Game1()
     {
@@ -37,6 +40,8 @@ public class Game1 : Game
         base.Initialize();
 
         _screenManager.ShowScreen(new TitleScene(this));
+
+ 
     }
 
     protected override void LoadContent()
@@ -44,6 +49,8 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
+        _crosshair = Content.Load<Texture2D>("images/BirdsEyeSlice_crosshair");
+        Mouse.SetCursor(MouseCursor.FromTexture2D(_crosshair, _crosshair.Width / 2, _crosshair.Height / 2));
     }
 
     protected override void Update(GameTime gameTime)
@@ -58,6 +65,9 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
+        _spriteBatch.Begin();
+        _spriteBatch.Draw(_crosshair, new Vector2(100, 100), Color.White);
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }
