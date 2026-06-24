@@ -11,6 +11,7 @@ namespace ShooterSlice.Scenes;
 
 public class TitleScene : GameScreen
 {
+    private Game1 game => (Game1)Game;
     private SpriteBatch _spriteBatch;
 
     // Title text properties.
@@ -36,17 +37,15 @@ public class TitleScene : GameScreen
 
     public override void Update(GameTime gameTime)
     {
-        KeyboardExtended.Update();
-        KeyboardStateExtended keyboardState = KeyboardExtended.GetState();
-
+        
         // Exit Game
-        if (keyboardState.WasKeyPressed(Keys.Escape))
+        if (game.keyboardState.WasKeyPressed(Keys.Escape))
         {
             Game.Exit();
         }
 
         // nav to GameScene
-        if (keyboardState.WasKeyPressed(Keys.E))
+        if (game.keyboardState.WasKeyPressed(Keys.E))
         {
             ScreenManager.ReplaceScreen(new GameScene(Game), new FadeTransition(GraphicsDevice, Color.Black, 0.5f));
         }

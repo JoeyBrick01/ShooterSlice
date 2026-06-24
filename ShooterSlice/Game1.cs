@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.Input;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
 using ShooterSlice.Scenes;
@@ -13,6 +14,7 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private readonly ScreenManager _screenManager;
+    public KeyboardStateExtended keyboardState { get; private set; }
 
     Texture2D _crosshair;
 
@@ -56,6 +58,8 @@ public class Game1 : Game
     protected override void Update(GameTime gameTime)
     {
         // TODO: Add your update logic here
+        KeyboardExtended.Update();
+        keyboardState = KeyboardExtended.GetState();
 
         base.Update(gameTime);
     }

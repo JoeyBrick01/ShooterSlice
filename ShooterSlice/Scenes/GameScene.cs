@@ -11,6 +11,7 @@ namespace ShooterSlice.Scenes;
 
 public class GameScene : GameScreen
 {
+    private Game1 game => (Game1)Game;
     private SpriteBatch _spriteBatch;
 
     public GameScene(Game game) : base(game)
@@ -26,11 +27,8 @@ public class GameScene : GameScreen
 
     public override void Update(GameTime gameTime)
     {
-        KeyboardExtended.Update();
-        KeyboardStateExtended keyboardState = KeyboardExtended.GetState();
-
         // nav to title
-        if (keyboardState.WasKeyPressed(Keys.Escape))
+        if (game.keyboardState.WasKeyPressed(Keys.Escape))
         {
             ScreenManager.ReplaceScreen(new TitleScene(Game), new FadeTransition(GraphicsDevice, Color.Black, 0.5f));
         }
