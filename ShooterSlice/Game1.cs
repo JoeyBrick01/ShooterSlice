@@ -48,6 +48,8 @@ public class Game1 : Game
 
         _screenManager.ShowScreen(new TitleScene(this));
 
+        Mouse.SetCursor(MouseCursor.FromTexture2D(_crosshair, _crosshair.Width / 2, _crosshair.Height / 2));
+
         Audio.PlaySong(_themeSong);
     }
 
@@ -57,7 +59,6 @@ public class Game1 : Game
 
         // TODO: use this.Content to load your game content here
         _crosshair = Content.Load<Texture2D>("images/BirdsEyeSlice_crosshair");
-        Mouse.SetCursor(MouseCursor.FromTexture2D(_crosshair, _crosshair.Width / 2, _crosshair.Height / 2));
 
         _themeSong = Content.Load<Song>("audio/theme");
     }
