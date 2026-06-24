@@ -22,7 +22,7 @@ public class GameScene : GameScreen
     public override void LoadContent()
     {
         base.LoadContent();
-        _spriteBatch = new SpriteBatch(Game.GraphicsDevice);
+        _spriteBatch = new SpriteBatch(game.GraphicsDevice);
     }
 
     public override void Update(GameTime gameTime)
@@ -30,13 +30,13 @@ public class GameScene : GameScreen
         // nav to title
         if (game.keyboardState.WasKeyPressed(Keys.Escape))
         {
-            ScreenManager.ReplaceScreen(new TitleScene(Game), new FadeTransition(GraphicsDevice, Color.Black, 0.5f));
+            ScreenManager.ReplaceScreen(new TitleScene(game), new FadeTransition(GraphicsDevice, Color.Black, 0.5f));
         }
     }
 
     public override void Draw(GameTime gameTime)
     {
-        Game.GraphicsDevice.Clear(Color.MonoGameOrange);
+        game.GraphicsDevice.Clear(Color.MonoGameOrange);
 
         _spriteBatch.Begin();
 

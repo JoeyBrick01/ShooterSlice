@@ -27,11 +27,11 @@ public class TitleScene : GameScreen
     public override void LoadContent()
     {
         base.LoadContent();
-        _spriteBatch = new SpriteBatch(Game.GraphicsDevice);
+        _spriteBatch = new SpriteBatch(game.GraphicsDevice);
 
         // Title configuration
-        _titleFont = Game.Content.Load<SpriteFont>("fonts/TitleFont");
-        _titlePosition = new Vector2(Game.GraphicsDevice.PresentationParameters.BackBufferWidth * .5f, Game.GraphicsDevice.PresentationParameters.BackBufferHeight * .2f);
+        _titleFont = game.Content.Load<SpriteFont>("fonts/TitleFont");
+        _titlePosition = new Vector2(game.GraphicsDevice.PresentationParameters.BackBufferWidth * .5f, game.GraphicsDevice.PresentationParameters.BackBufferHeight * .2f);
         _titleOrigin = _titleFont.MeasureString(_titleText) * .5f;
     }
 
@@ -47,13 +47,13 @@ public class TitleScene : GameScreen
         // nav to GameScene
         if (game.keyboardState.WasKeyPressed(Keys.E))
         {
-            ScreenManager.ReplaceScreen(new GameScene(Game), new FadeTransition(GraphicsDevice, Color.Black, 0.5f));
+            ScreenManager.ReplaceScreen(new GameScene(game), new FadeTransition(game.GraphicsDevice, Color.Black, 0.5f));
         }
     }
 
     public override void Draw(GameTime gameTime)
     {
-        Game.GraphicsDevice.Clear(Color.CornflowerBlue);
+        game.GraphicsDevice.Clear(Color.CornflowerBlue);
 
         _spriteBatch.Begin();
 
