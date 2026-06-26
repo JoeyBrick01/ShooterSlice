@@ -6,6 +6,7 @@ using MonoGame.Extended.Input;
 using MonoGame.Extended.Graphics;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
+using Microsoft.Xna.Framework.Media;
 
 namespace ShooterSlice.Scenes;
 
@@ -15,6 +16,7 @@ public class TestENV: GameScreen
     private SpriteBatch _spriteBatch;
 
     Texture2D _tile;
+    Song _sceneSong;
 
     public TestENV(Game game) : base(game)
     {
@@ -27,6 +29,9 @@ public class TestENV: GameScreen
         _spriteBatch = new SpriteBatch(game.GraphicsDevice);
 
         _tile = game.Content.Load<Texture2D>("images/GrayTile");
+
+        _sceneSong = game.Content.Load<Song>("audio/castlevania");
+        game.PlaySong(_sceneSong);
     }
 
     public override void Update(GameTime gameTime)
