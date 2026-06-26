@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 using MonoGame.Extended.Input;
 using MonoGame.Extended.Screens;
 using ShooterSlice.Audio;
@@ -18,7 +19,6 @@ public class Game1 : Game
     public static AudioController Audio { get; private set; }
     public KeyboardStateExtended keyboardState { get; private set; }
 
-    private Song _themeSong;
     Texture2D _crosshair;
 
     public Game1()
@@ -49,8 +49,6 @@ public class Game1 : Game
         _screenManager.ShowScreen(new TitleScene(this));
 
         Mouse.SetCursor(MouseCursor.FromTexture2D(_crosshair, _crosshair.Width / 2, _crosshair.Height / 2));
-
-        Audio.PlaySong(_themeSong);
     }
 
     protected override void LoadContent()
@@ -59,8 +57,6 @@ public class Game1 : Game
 
         // TODO: use this.Content to load your game content here
         _crosshair = Content.Load<Texture2D>("images/BirdsEyeSlice_crosshair");
-
-        _themeSong = Content.Load<Song>("audio/theme");
     }
 
     protected override void Update(GameTime gameTime)
@@ -91,5 +87,35 @@ public class Game1 : Game
         Audio.Dispose();
 
         base.UnloadContent();
+    }
+
+    public void PlaySong(Song song, bool isRepeating = true)
+    {
+        Audio.PlaySong(song, isRepeating);
+    }
+
+    public void PlaySoundEffect(SoundEffect soundEffect)
+    {
+        Audio.PlaySoundEffect(soundEffect);
+    }
+
+    public void PlaySoundEffect(SoundEffect soundEffect, float volume, float pitch, float pan, bool isLooped)
+    {
+        Audio.PlaySoundEffect(soundEffect, volume, pitch, pan, isLooped);
+    }
+
+    public void PauseAudio()
+    {
+        Audio.PauseAudio();
+    }
+
+    public void ResumeAudio()
+    {
+        Audio.ResumeAudio();
+    }
+
+    public void ToggleMute()
+    {
+        Audio.ToggleMute();
     }
 }

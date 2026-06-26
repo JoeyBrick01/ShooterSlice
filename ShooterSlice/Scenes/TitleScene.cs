@@ -1,11 +1,13 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using MonoGame.Extended.Graphics;
 using MonoGame.Extended.Input;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
+using ShooterSlice.Audio;
+using System;
 
 namespace ShooterSlice.Scenes;
 
@@ -13,6 +15,8 @@ public class TitleScene : GameScreen
 {
     private Game1 game => (Game1)Game;
     private SpriteBatch _spriteBatch;
+
+    private Song _themeSong;
 
     // Title text properties.
     private readonly string _titleText = "Shooter Slice";
@@ -28,6 +32,10 @@ public class TitleScene : GameScreen
     {
         base.LoadContent();
         _spriteBatch = new SpriteBatch(game.GraphicsDevice);
+
+        // Song
+        _themeSong = game.Content.Load<Song>("audio/theme");
+        game.PlaySong(_themeSong);
 
         // Title configuration
         _titleFont = game.Content.Load<SpriteFont>("fonts/TitleFont");

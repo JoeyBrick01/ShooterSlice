@@ -42,7 +42,7 @@ public class TestENV: GameScreen
     {
         game.GraphicsDevice.Clear(Color.MonoGameOrange);
 
-        // Draw tiled background
+        // Draw tiled background, background is just GrayTIle texture that wraps
         _spriteBatch.Begin(samplerState: SamplerState.PointWrap);
         _spriteBatch.Draw(_tile, game.GraphicsDevice.PresentationParameters.Bounds, new Rectangle(Vector2.Zero.ToPoint(), game.GraphicsDevice.PresentationParameters.Bounds.Size), Color.White);
         _spriteBatch.End();
