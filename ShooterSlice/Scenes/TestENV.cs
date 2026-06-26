@@ -9,12 +9,14 @@ using MonoGame.Extended.Screens.Transitions;
 
 namespace ShooterSlice.Scenes;
 
-public class GameScene : GameScreen
+public class TestENV: GameScreen
 {
     private Game1 game => (Game1)Game;
     private SpriteBatch _spriteBatch;
 
-    public GameScene(Game game) : base(game)
+    Texture2D _tile;
+
+    public TestENV(Game game) : base(game)
     {
 
     }
@@ -23,6 +25,8 @@ public class GameScene : GameScreen
     {
         base.LoadContent();
         _spriteBatch = new SpriteBatch(game.GraphicsDevice);
+
+        _tile = game.Content.Load<Texture2D>("images/GrayTile");
     }
 
     public override void Update(GameTime gameTime)
@@ -38,8 +42,14 @@ public class GameScene : GameScreen
     {
         game.GraphicsDevice.Clear(Color.MonoGameOrange);
 
+        // Draw tiled background
+        _spriteBatch.Begin(samplerState: SamplerState.PointWrap);
+        _spriteBatch.Draw(_tile, game.GraphicsDevice.PresentationParameters.Bounds, new Rectangle(Vector2.Zero.ToPoint(), game.GraphicsDevice.PresentationParameters.Bounds.Size), Color.White);
+        _spriteBatch.End();
+
         _spriteBatch.Begin();
 
         _spriteBatch.End();
     }
 }
+

@@ -47,7 +47,7 @@ public class TitleScene : GameScreen
         // nav to GameScene
         if (game.keyboardState.WasKeyPressed(Keys.E))
         {
-            ScreenManager.ReplaceScreen(new GameScene(game), new FadeTransition(game.GraphicsDevice, Color.Black, 0.5f));
+            ScreenManager.ReplaceScreen(new TestENV(game), new FadeTransition(game.GraphicsDevice, Color.Black, 0.5f));
         }
     }
 
