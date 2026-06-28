@@ -17,7 +17,6 @@ public class Game1 : Game
 
     private readonly ScreenManager _screenManager;
     public static AudioController Audio { get; private set; }
-    public KeyboardStateExtended keyboardState { get; private set; }
 
     Texture2D _crosshair;
 
@@ -63,7 +62,7 @@ public class Game1 : Game
     {
         // TODO: Add your update logic here
         KeyboardExtended.Update();
-        keyboardState = KeyboardExtended.GetState();
+        MouseExtended.Update();
 
         Audio.Update();
 

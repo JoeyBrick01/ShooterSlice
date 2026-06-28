@@ -45,15 +45,17 @@ public class TitleScene : GameScreen
 
     public override void Update(GameTime gameTime)
     {
-        
+        KeyboardStateExtended keyboard = KeyboardExtended.GetState();
+        MouseStateExtended mouse = MouseExtended.GetState();
+
         // Exit Game
-        if (game.keyboardState.WasKeyPressed(Keys.Escape))
+        if (keyboard.WasKeyPressed(Keys.Escape))
         {
             Game.Exit();
         }
 
         // nav to GameScene
-        if (game.keyboardState.WasKeyPressed(Keys.E))
+        if (keyboard.WasKeyPressed(Keys.E))
         {
             ScreenManager.ReplaceScreen(new TestENV(game), new FadeTransition(game.GraphicsDevice, Color.Black, 0.5f));
         }

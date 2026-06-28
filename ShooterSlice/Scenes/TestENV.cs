@@ -36,8 +36,10 @@ public class TestENV: GameScreen
 
     public override void Update(GameTime gameTime)
     {
+        KeyboardStateExtended keyboard = KeyboardExtended.GetState();
+        MouseStateExtended mouse = MouseExtended.GetState();
         // nav to title
-        if (game.keyboardState.WasKeyPressed(Keys.Escape))
+        if (keyboard.WasKeyPressed(Keys.Escape))
         {
             ScreenManager.ReplaceScreen(new TitleScene(game), new FadeTransition(GraphicsDevice, Color.Black, 0.5f));
         }
